@@ -1,9 +1,15 @@
+// This code will play the animation of the butterfly (useful to test if you have soldered the LEDs properly!)
+// Pinout:
+// SCL - A5
+// SDA - A4 
+// GPIO1 - A3
+
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
 #include <avr/power.h>
 #endif
 
-#define PIN         12
+#define PIN         A3
 
 #define Colour1 0x00058240
 #define Colour2 0x0087C159

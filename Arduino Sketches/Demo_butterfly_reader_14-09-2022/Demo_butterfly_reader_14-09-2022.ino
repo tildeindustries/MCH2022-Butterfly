@@ -1,3 +1,10 @@
+// This code try to read butterfly EEPROM (useful to test if you have soldered the EEPROM properly!) 
+// The LEDs might not light up if they are not soldered properly, but you can check if it read the LIFE ID through the serial port 115200
+// Pinout:
+// SCL - A5
+// SDA - A4 
+// GPIO1 - A3
+
 #include <Adafruit_NeoPixel.h>
 #include "GammaCorrectionLib.h"
 #include <Wire.h>
@@ -70,6 +77,11 @@ void loop() {
     delay(2);
   }
   delay(500);
+
+  Serial.println("Colour1");
+  Serial.println(Colour1);
+  Serial.println("Colour2");
+  Serial.println(Colour2);
 
   for (int i = 0; i < 255; i++)
   {
@@ -196,12 +208,18 @@ void ReadSAO()
     }
 
     Colour1 = (buffer_data[0] << 16);
+    Serial.println(Colour1);
     Colour1 = Colour1 + (buffer_data[1] << 8);
+    Serial.println(Colour1);
     Colour1 = Colour1 + (buffer_data[2]);
+    Serial.println(Colour1);
 
     Colour2 = (buffer_data[3] << 16);
+    Serial.println(Colour2);
     Colour2 = Colour2 + (buffer_data[4] << 8);
+    Serial.println(Colour2);
     Colour2 = Colour2 + (buffer_data[5]);
+    Serial.println(Colour2);
 
     Colour3 = (buffer_data[6] << 16);
     Colour3 = Colour3 + (buffer_data[7] << 8);
